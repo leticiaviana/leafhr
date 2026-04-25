@@ -1,0 +1,110 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BalanceType {
+  id: ID!
+  employeeId: String!
+  locationId: String!
+  leaveType: LeaveType!
+  year: Int!
+  totalEntitled: Float!
+  used: Float!
+  pending: Float!
+  available: Float!
+  source: BalanceSource!
+  externalId: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum LeaveType {
+  PTO
+  VACATION
+  SICK
+  PERSONAL
+  BEREAVEMENT
+  MATERNITY
+  PATERNITY
+}
+
+enum BalanceSource {
+  HCM_REALTIME
+  HCM_SYNC
+  LOCAL_CACHE
+  MANUAL
+  MANUAL_ADJUSTMENT
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type AuditType {
+  id: ID!
+  requestId: String!
+  fromStatus: RequestStatus!
+  toStatus: RequestStatus!
+  actorId: String!
+  actorRole: String!
+  comment: String
+  timestamp: DateTime!
+}
+
+enum RequestStatus {
+  PENDING_MANAGER
+  PENDING_HCM_CONFIRMATION
+  APPROVED
+  REJECTED
+  CANCELLED
+  BALANCE_STALE
+  BALANCE_ERROR
+}
+
+type TimeOffRequestType {
+  id: ID!
+  employeeId: String!
+  locationId: String!
+  leaveType: LeaveType!
+  startDate: String!
+  startDateTimestamp: Float!
+  endDate: String!
+  endDateTimestamp: Float!
+  totalDays: Float!
+  status: RequestStatus!
+  reason: String
+  managerId: String
+  year: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  archivedAt: DateTime
+  audits: [AuditType!]
+}
+
+type Query {
+  myBalances(year: Int!): [BalanceType!]!
+  employeeBalances(employeeId: String!, year: Int!, locationId: String): [BalanceType!]!
+  myRequests(year: Int): [TimeOffRequestType!]!
+  request(id: String!): TimeOffRequestType!
+  pendingManagerApprovals: [TimeOffRequestType!]!
+}
+
+type Mutation {
+  submitRequest(input: SubmitRequestInput!): TimeOffRequestType!
+  transitionRequest(input: TransitionInput!): TimeOffRequestType!
+}
+
+input SubmitRequestInput {
+  locationId: String
+  leaveType: LeaveType!
+  startDate: String!
+  endDate: String!
+  reason: String
+}
+
+input TransitionInput {
+  requestId: String!
+  toStatus: RequestStatus!
+  comment: String
+}

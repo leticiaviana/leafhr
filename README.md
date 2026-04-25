@@ -1,13 +1,13 @@
 # LeafHR
 
-LeafHR is a private NestJS microservice for time-off management.
+LeafHR is a NestJS microservice for time-off management.
 
 ## Project Structure
 
 - `TRD.md` — technical requirements document
 - `leafhr/` — application source code
+- `leafhr/README.md` — project setup and run instructions
 
 ## Notes
 
-- The repository is private.
 - Sensitive files such as `.env` are excluded from version control.

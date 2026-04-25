@@ -4,6 +4,8 @@ LeafHR is a NestJS + GraphQL service that manages employee time-off lifecycle an
 
 Built with **NestJS 11**, **GraphQL (Apollo)**, **TypeORM**, and **SQLite**.
 
+Repository: https://github.com/leticiaviana/leafhr
+
 ---
 
 ## Quick Start

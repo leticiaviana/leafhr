@@ -10,7 +10,7 @@ describe('RolesGuard', () => {
 
   beforeEach(() => {
     reflector = new Reflector();
-    // No UserService — JWT fallback mode
+    // No UserReadService — JWT fallback mode
     guard = new RolesGuard(reflector, undefined);
   });
 
@@ -51,7 +51,7 @@ describe('RolesGuard', () => {
     await expect(guard.canActivate(ctx)).rejects.toThrow(ForbiddenError);
   });
 
-  describe('with UserService (DB-based roles)', () => {
+  describe('with UserReadService (DB-based roles)', () => {
     const mockUserService = {
       hasAnyRole: jest.fn(),
     };

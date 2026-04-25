@@ -4,7 +4,7 @@ import { GqlExecutionContext } from '@nestjs/graphql';
 import { Role } from '../shared/types';
 import { IActor } from '../shared/interfaces';
 import { ForbiddenError } from '../shared/exceptions';
-import { UserService } from '../user';
+import { UserReadService } from '../user';
 
 export const ROLES_KEY = 'roles';
 
@@ -13,7 +13,7 @@ export class RolesGuard implements CanActivate {
   constructor(
     private reflector: Reflector,
     @Optional()
-    private userService?: UserService,
+    private userService?: UserReadService,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {

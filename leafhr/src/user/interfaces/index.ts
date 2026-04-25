@@ -1,1 +1,1 @@
-// Empty index - Interfaces will be added as needed
+export type { IUserReadService, IUserWriteService } from './user-service.interface';

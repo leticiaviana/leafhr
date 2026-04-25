@@ -1,7 +1,7 @@
 import { TimeOffRequestEntity, AuditEntity } from '../entities';
 import { RequestStatus } from '../../shared/types';
 import { IActor } from '../../shared/interfaces';
-import { ISubmitRequestInput } from './request-dto.interface';
+import { ISubmitRequestInput } from './request.interface';
 
 export interface IRequestSubmitInput extends ISubmitRequestInput {}
 

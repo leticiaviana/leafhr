@@ -16,7 +16,7 @@ import {
   SubmitRequestInput,
   TransitionInput,
   AuditType,
-} from './dto';
+} from './graphql';
 import { GqlAuthGuard, Roles, CurrentUser } from '../auth';
 import { Role } from '../shared/types';
 import type { IActor } from '../shared/interfaces/actor.interface';

@@ -2,7 +2,7 @@ import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { UseGuards, ForbiddenException, Inject, Logger } from '@nestjs/common';
 import { BalanceReadService } from './balance.read.service';
 import { BalanceWriteService } from './balance.write.service';
-import { BalanceType } from './dto';
+import { BalanceType } from './graphql';
 import { BalanceEntity } from './entities';
 import { GqlAuthGuard, Roles, CurrentUser } from '../auth';
 import { Role, BalanceSource } from '../shared/types';

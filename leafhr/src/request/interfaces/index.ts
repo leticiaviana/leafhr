@@ -8,4 +8,4 @@ export type {
   ITransitionInput,
   IAuditType,
   ITimeOffRequestType,
-} from './request-dto.interface';
+} from './request.interface';
